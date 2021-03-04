@@ -24,7 +24,7 @@ using namespace std;
 void readdata(int data[SETSIZE][CNO], int teacher[SETSIZE])
 {
     string file_name;
-    cout << "データセットのファイル名を入力:";
+    cout << "please enter the datasets file name :";
     cin >> file_name;
 
     ifstream fin;
@@ -48,7 +48,7 @@ void readdata(int data[SETSIZE][CNO], int teacher[SETSIZE])
 int rand012()
 {
     int rnd;
-    rnd = 1 + rand() % 2;
+    rnd = rand() % 3;
     return rnd;
 }
 

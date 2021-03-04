@@ -55,7 +55,31 @@ int main()
         }
 
         /*検査*/
+        score = calcscore(data, teacher, answer);
+
+        /*最良スコアの更新*/
+        if (score > bestscore)
+        {
+            for (int j = 0; j < CNO; j++)
+            {
+                bestanswer[j] = answer[j];
+            }
+            bestscore = score;
+
+            for (int j = 0; j < CNO; j++)
+            {
+                cout << bestanswer[j] << " ";
+            }
+            cout << ":score=" << bestscore << "\n";
+        }
     }
+
+    cout << "\nbestscore\n";
+    for (int j = 0; j < CNO; j++)
+    {
+        cout << bestanswer[j] << " ";
+    }
+    cout << ":score=" << bestscore;
 
     return 0;
 }
