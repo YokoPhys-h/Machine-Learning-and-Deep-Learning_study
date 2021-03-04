@@ -33,7 +33,6 @@ int calcscore(int data[SETSIZE][CNO], int teacher[SETSIZE], int answer[CNO]); //
 
 int main()
 {
-    int i, j;
     int score = 0;
     int answer[CNO];
     int data[SETSIZE][CNO];
@@ -74,7 +73,8 @@ int main()
         }
     }
 
-    cout << "\nbestscore\n";
+    /*最良解*/
+    cout << "\nbestsanswer\n";
     for (int j = 0; j < CNO; j++)
     {
         cout << bestanswer[j] << " ";
