@@ -50,23 +50,6 @@ MatrixXd sigmoid(MatrixXd &x)
 }
 //////////////////////////////////////////////////////////
 
-//恒等関数
-MatrixXd identity_function(MatrixXd &x)
-{
-    MatrixXd result(x.rows(), x.cols());
-
-    for (int i = 0; i < x.rows(); i++)
-    {
-        for (int j = 0; j < x.cols(); j++)
-        {
-            result(i, j) = x(i, j);
-        }
-    }
-
-    return result;
-}
-/////////////////////////////////////////////////////////////
-
 //relu関数
 vector<float> relu(vector<float> &x)
 {
@@ -88,6 +71,55 @@ vector<float> relu(vector<float> &x)
     return result;
 }
 /////////////////////////////////////////////////////////////////////
+
+//恒等関数
+MatrixXd identity_function(MatrixXd &x)
+{
+    MatrixXd result(x.rows(), x.cols());
+
+    for (int i = 0; i < x.rows(); i++)
+    {
+        for (int j = 0; j < x.cols(); j++)
+        {
+            result(i, j) = x(i, j);
+        }
+    }
+
+    return result;
+}
+/////////////////////////////////////////////////////////////
+
+//ソフトマックス関数
+MatrixXd softmax(MatrixXd &x)
+{
+    MatrixXd c(x.rows(), x.cols());
+    MatrixXd test(x.rows(), x.cols());
+    MatrixXd exp_x(x.rows(), x.cols());
+    double sum_exp_x;
+    MatrixXd result(x.rows(), x.cols());
+
+    for (int i = 0; i < x.rows(); i++)
+    {
+        for (int j = 0; j < x.cols(); j++)
+        {
+            c(i, j) = x.maxCoeff();
+        }
+    }
+    test = x - c;
+
+    for (int i = 0; i < x.rows(); i++)
+    {
+        for (int j = 0; j < x.cols(); j++)
+        {
+            exp_x(i, j) = exp(test(i, j)); //オーバーフロー対策
+        }
+    }
+
+    sum_exp_x = exp_x.sum();
+
+    result = exp_x / sum_exp_x;
+    return result;
+}
 
 /*3層ニューラルネットワーク*/
 //初期値の格納
