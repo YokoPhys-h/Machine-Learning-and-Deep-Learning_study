@@ -18,6 +18,8 @@
 #include <set>
 #include <numeric>
 #include <list>
+#include <C:/Program Files/eigen-3.3.9/Eigen/Dense>
+using namespace Eigen;
 using namespace std;
 
 vector<float> sigmoid(vector<float> &x)
@@ -28,6 +30,20 @@ vector<float> sigmoid(vector<float> &x)
     {
         result[i] = 1. / (1 + exp(-x[i]));
     }
+    return result;
+}
+MatrixXd sigmoid(MatrixXd &x)
+{
+    MatrixXd result(x.rows(), x.cols());
+
+    for (int i = 0; i < x.rows(); i++)
+    {
+        for (int j = 0; j < x.cols(); j++)
+        {
+            result(i, j) = 1. / (1 + exp(-x(i, j)));
+        }
+    }
+
     return result;
 }
 
@@ -47,6 +63,6 @@ vector<float> relu(vector<float> &x)
             result[i] = 0;
             return result;
         }
-        }
+    }
     return result;
 }
