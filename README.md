@@ -6,4 +6,4 @@
 
 # Progress
 - 2021/4/1 元々作ってあったファイルをpieceに移動し,再スタート
-- 2021/4/2 3層ニューラルネットワークの実装とそれを関数としてまとめた(sec3-4-2.cpp, sec3-4-2parameters.h, function.cpp)
+- 2021/4/2 3層ニューラルネットワークの実装とそれを外部関数としてまとめた(sec3-4-2.cpp, sec3-4-2parameters.h, function.cpp)
